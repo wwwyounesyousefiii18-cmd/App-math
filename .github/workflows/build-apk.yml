@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - master
 
 jobs:
   build:
@@ -15,15 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build APK with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
+      - name: Build APK
+        uses: docker://kivy/buildozer:latest
         with:
-          workdir: .
-          buildozer_version: master
+          args: android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Math-Tools-APK
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
