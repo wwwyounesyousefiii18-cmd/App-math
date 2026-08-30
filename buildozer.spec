@@ -26,7 +26,7 @@
 # (int) Log level (0 = error only, 1 = info, 2 = debug)
  log_level = 2
 # (int) Warning this is only for the first build; leave empty for CI caching
- warn_on_root = 1
+ warn_on_root = 0
 
 [app:android]
 # (str) Android app title
